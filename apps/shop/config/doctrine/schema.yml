@@ -1,0 +1,30 @@
+Article:
+  actAs: { Timestampable: ~ }
+  columns:
+    tarif: { type: string(255), notnull: true }
+    laufzeit: { type: integer(5), notnull: false, unsigned: true }
+    portierung: { type: bool, notnull: true }
+    guthaben: { type: float, unsigned: true }
+    modem: { type: string(255), notnull: true }
+    ip: { type: bool }
+    fp: { type: bool }
+    up: { type: bool }
+    service: { type: bool }
+    kdnr: { type: string(255) }
+    titel: { type: string(15) }
+    name: { type: string(50) }
+    vorname: { type: string(50) }
+    gebdat: { type: date }
+    strasse: { type: string(200) }
+    plz: { type: string(5) }
+    ort: { type: string(200) }
+    kto: { type: integer(10), zerofill: true, unsigned: true }
+    blz: { type: integer(8), unsigned: true }
+    vorwahl: { type: varchar(6) }
+    rfn: { type: varchar(10) }
+    fax: { type: varchar(15) }
+    mail: { type: varchar(50) }
+    bestellt: { type: bool }
+    feld1: { type: varchar(255) }
+    feld2: { type: varchar(255) }
+    feld3: { type: varchar(255) }

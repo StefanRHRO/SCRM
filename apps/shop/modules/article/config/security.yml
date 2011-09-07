@@ -1,0 +1,20 @@
+options:
+  credentials: edit_interessent
+index:
+  credentials: list_interessenten
+show:
+  credentials: list_interessenten
+new:
+  credentials: edit_interessent
+create:
+  credentials: edit_interessent
+edit:
+  credentials: edit_interessent
+update:
+  credentials: edit_interessent
+delete:
+  credentials: delete_interessent
+import:
+  credentials: import_interessent
+doImport:
+  credentials: import_interessent

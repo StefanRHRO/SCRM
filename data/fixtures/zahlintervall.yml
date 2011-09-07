@@ -1,0 +1,9 @@
+Zahlintervall:
+  mntl:
+    name: monatlich
+    beschreibung: |
+      monatliche Zahlweise
+  einmalig:
+    name: einmalig
+    beschreibung: |
+      einmalige Zahlweise

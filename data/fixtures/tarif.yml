@@ -1,0 +1,52 @@
+Tarif:
+  all-net:
+    name: all-net
+    beschreibung: |
+      ALL NET FLAT privat 18.000/1.024 kbit/s 69,95 Euro
+    kosten: 69.95
+    Zahlintervall: mntl
+  speed-d:
+    name: speed-d
+    beschreibung: |
+      Speed D-Flate 30.000/2.048 kbit/s 49,95 Euro
+    kosten: 49.95
+    Zahlintervall: mntl
+  up-d:
+    name: up-d
+    beschreibung: |
+      Up D-Flate 18.000/4.094 kbit/s 49,95 Euro
+    kosten: 49.95
+    Zahlintervall: mntl
+  medium-d:
+    name: medium-d
+    beschreibung: |
+      Medium D-Flate 18.000/1.024 kbit/s-39,95 Euro
+    kosten: 39.95
+    Zahlintervall: mntl
+  daily-d:
+    name: daily-d
+    beschreibung: |
+      Daily D-Flate 6.144/256 kbit/s-29,95 Euro
+    kosten: 29.95
+    Zahlintervall: mntl
+  country-d:
+    name: country-d
+    is_country: true
+    beschreibung: |
+      Country 30.000 30.000/2.048 kbit/s-39,95 Euro
+    kosten: 39.95
+    Zahlintervall: mntl
+  country-18:
+    name: country-18
+    is_country: true
+    beschreibung: |
+      Country 18.000 18.000/1.024 kbit/s-29,95 Euro
+    kosten: 29.95
+    Zahlintervall: mntl
+  country-9:
+    name: country-9
+    is_country: true
+    beschreibung: |
+      Country 9.000 9.000/512 kbit/s-24,95 Euro
+    kosten: 24.95
+    Zahlintervall: mntl

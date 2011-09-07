@@ -1,0 +1,13 @@
+Modem:
+  adsl:
+    name: adsl
+    beschreibung: |
+      ADSL-WLAN-2x Tel-Router Kaution 1x 50 €
+    kosten: 50.00
+    Zahlintervall: einmalig
+  vdsl:
+    name: vdsl
+    beschreibung: |
+      VDSL;ADSL;N-WLAN;3xTel[1xISDN] Kaut.1x120 €
+    kosten: 120.00
+    Zahlintervall: einmalig

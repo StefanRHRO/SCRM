@@ -1,0 +1,31 @@
+Guthaben:
+  kein:
+    name: kein
+    beschreibung: |
+      kein monatliches Guthaben
+    kosten: 0.00
+    Zahlintervall: mntl
+  euro-499:
+    name: euro-499
+    beschreibung: |
+      Guthaben - 4,99 Euro monatlich
+    kosten: 4.99
+    Zahlintervall: mntl
+  euro-999:
+    name: euro-999
+    beschreibung: |
+      Guthaben - 9,99 Euro monatlich
+    kosten: 9.99
+    Zahlintervall: mntl
+  euro-1999:
+    name: euro-1999
+    beschreibung: |
+      Guthaben - 19,99 Euro monatlich
+    kosten: 19.99
+    Zahlintervall: mntl
+  euro-2999:
+    name: euro-2999
+    beschreibung: |
+      Guthaben - 29,99 Euro monatlich
+    kosten: 29.99
+    Zahlintervall: mntl

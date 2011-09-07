@@ -1,0 +1,114 @@
+Article:
+  actAs:
+    Timestampable: ~
+    Versionable:
+      versionColumn: version
+      className: %CLASS%Version
+      auditLog: true
+    SoftDelete: ~
+  columns:
+    fp: { type: bool }
+    upl: { type: bool }
+    service: { type: bool }
+    kdnr: { type: string(255) }
+    titel: { type: string(15) }
+    name: { type: string(50) }
+    vorname: { type: string(50) }
+    gebdat: { type: date }
+    strasse: { type: string(200) }
+    hnr: { type: string(25) }
+    plz: { type: string(5) }
+    ort: { type: string(200) }
+    kto: { type: integer(10), zerofill: true, unsigned: true }
+    blz: { type: integer(8), unsigned: true }
+    vorwahl: { type: varchar(6) }
+    rfn: { type: varchar(10) }
+    fax: { type: varchar(15) }
+    mail: { type: varchar(50) }
+    bestellt: { type: bool }
+    termin: { type: date }
+    feld1: { type: varchar(255) }
+    feld2: { type: varchar(255) }
+    feld3: { type: varchar(255) }
+    tarif_id: { type: integer, notnull: false }
+    laufzeit_id: { type: integer, notnull: false }
+    guthaben_id: { type: integer, notnull: false }
+    modem_id: { type: integer, notnull: false }
+    portierung_id: { type: integer, notnull: false }
+    ip_id: { type: integer, notnull: false }
+    user_id: { type: integer, notnull: false }
+  relations:
+    Tarif: { onDelete: CASCADE, local: tarif_id, foreign: id, foreignAlias: Articles }
+    Laufzeit: { onDelete: CASCADE, local: laufzeit_id, foreign: id, foreignAlias: Articles }
+    Guthaben: { onDelete: CASCADE, local: guthaben_id, foreign: id, foreignAlias: Articles }
+    Modem: { onDelete: CASCADE, local: modem_id, foreign: id, foreignAlias: Articles }
+    Portierung: { onDelete: CASCADE, local: portierung_id, foreign: id, foreignAlias: Articles }
+    Ip: { onDelete: CASCADE, local: ip_id, foreign: id, foreignAlias: Articles }
+    sfGuardUser: { onDelete: CASCADE, local: user_id, foreign: id, foreignAlias: Articles }
+Tarif:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: { type: string(255), notnull: true }
+    beschreibung: { type: string(255), notnull: false }
+    kosten: { type: float, notnull: true, unsigned: true }
+    zahlintervall_id: { type: integer, notnull: false }
+    is_country: { type:bool }
+  relations:
+    Zahlintervall: { onDelete: CASCADE, local: zahlintervall_id, foreign: id, foreignAlias: Tarif }
+
+Laufzeit:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: { type: string(255), notnull: true }
+    beschreibung: { type: string(255), notnull: false }
+    kosten: { type: float, notnull: true, unsigned: true }
+    laufzeit_in_monaten: { type: integer, notnull: true }
+    zahlintervall_id: { type: integer, notnull: false }
+  relations:
+    Zahlintervall: { onDelete: CASCADE, local: zahlintervall_id, foreign: id, foreignAlias: Laufzeit }
+
+Guthaben:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: { type: string(255), notnull: true }
+    beschreibung: { type: string(255), notnull: false }
+    kosten: { type: float, notnull: true, unsigned: true }
+    zahlintervall_id: { type: integer, notnull: false }
+  relations:
+    Zahlintervall: { onDelete: CASCADE, local: zahlintervall_id, foreign: id, foreignAlias: Guthaben }
+
+Modem:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: { type: string(255), notnull: true }
+    beschreibung: { type: string(255), notnull: false }
+    kosten: { type: float, notnull: true, unsigned: true }
+    zahlintervall_id: { type: integer, notnull: false }
+  relations:
+    Zahlintervall: { onDelete: CASCADE, local: zahlintervall_id, foreign: id, foreignAlias: Modem }
+
+Portierung:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: { type: string(255), notnull: true }
+    beschreibung: { type: string(255), notnull: false }
+    kosten: { type: float, notnull: true, unsigned: true }
+    zahlintervall_id: { type: integer, notnull: false }
+  relations:
+    Zahlintervall: { onDelete: CASCADE, local: zahlintervall_id, foreign: id, foreignAlias: Portierung }
+    
+Ip:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: { type: string(255), notnull: true }
+    beschreibung: { type: string(255), notnull: false }
+    kosten: { type: float, notnull: true, unsigned: true }
+    zahlintervall_id: { type: integer, notnull: false }
+  relations:
+    Zahlintervall: { onDelete: CASCADE, local: zahlintervall_id, foreign: id, foreignAlias: Ip }
+    
+Zahlintervall:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: { type: string(255), notnull: true }
+    beschreibung: { type: string(255), notnull: false }

@@ -1,0 +1,13 @@
+Portierung:
+  portieren:
+    name: portieren
+    beschreibung: |
+      portieren 29,95€
+    kosten: 29.95
+    Zahlintervall: einmalig
+  neu:
+    name: neu
+    beschreibung: |
+      neue Telefonnummer 0,-€
+    kosten: 0.00
+    Zahlintervall: einmalig

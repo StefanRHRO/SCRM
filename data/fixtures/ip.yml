@@ -1,0 +1,13 @@
+Ip:
+  ja:
+    name: ja
+    beschreibung: |
+      Ja - +3.- Euro mtl.
+    kosten: 3.00
+    Zahlintervall: mntl
+  nein:
+    name: nein
+    beschreibung: |
+      Nein
+    kosten: 0.00
+    Zahlintervall: mntl

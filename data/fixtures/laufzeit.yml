@@ -1,0 +1,22 @@
+Laufzeit:
+  monate-12:
+    name: monate-12
+    beschreibung: |
+      12 Monate- +6.- Euro mtl.
+    kosten: 6.00
+    laufzeit_in_monaten: 12
+    Zahlintervall: mntl
+  monate-24:
+    name: monate-24
+    beschreibung: |
+      24 Monate- +3.- Euro mtl.
+    kosten: 3.00
+    laufzeit_in_monaten: 24
+    Zahlintervall: mntl
+  monate-36:
+    name: monate-36
+    beschreibung: |
+      36 Monate- +0.- Euro mtl.
+    kosten: 0.00
+    laufzeit_in_monaten: 36
+    Zahlintervall: mntl

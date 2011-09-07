@@ -1,0 +1,6 @@
+"tarif";"Laufzeit";"portierung";"guthaben";"Modem";"ip";"fp";"up";"service";"kdnr";"titel";"name";"vorname";"Gebdat";"strasse";"plz";"ort";"kto";"blz";"vorwahl";"rfn";"fax";"mail";"interessent";"bestellt";"feld1";"feld2";"feld2"
+"pa";3;12;"Ja/nein";4,99;"FB";2120;"ja/nein";"ja/nein";"ja/nein";"Ja/nein";;;;;;;;;;;;;;;;;
+"pa";9;24;;9,99;"FB";7290;;;;;;;;;;;;;;;;;;;;;
+"pa";18;36;;19,99;;;;;;;;;;;;;;;;;;;;;;;
+"medium";"D";;;29,99;;;;;;;;;;;;;;;;;;;;;;;
+"All";"net";;;;;;;;;;;;;;;;;;;;;;;;;;
