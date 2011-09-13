@@ -9,6 +9,8 @@ Article:
     vorname: Stefan
     gebdat: 1983-05-28
     strasse: Fontanestrasse
+    hnr: 19
+    adr_zusatz: 4. Etage
     plz: 44805
     ort: Bochum
     kto: 123456
@@ -35,6 +37,8 @@ Article:
     vorname: Thomas
     gebdat: 1983-05-28
     strasse: Blabla
+    hnr: 19
+    adr_zusatz: 4. Etage
     plz: 12345
     ort: Magdeburg
     kto: 123456
@@ -61,6 +65,8 @@ Article:
     vorname: Stefan
     gebdat: 1983-05-28
     strasse: Fontanestrasse
+    hnr: 19
+    adr_zusatz: 4. Etage
     plz: 44805
     ort: Bochum
     kto: 123456
@@ -87,6 +93,8 @@ Article:
     vorname: Thomas
     gebdat: 1983-05-28
     strasse: Blabla
+    hnr: 19
+    adr_zusatz: 4. Etage
     plz: 12345
     ort: Magdeburg
     kto: 123456

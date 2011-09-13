@@ -15,6 +15,7 @@
  * @property date $gebdat
  * @property string $strasse
  * @property string $hnr
+ * @property string $adr_zusatz
  * @property string $plz
  * @property string $ort
  * @property integer $kto
@@ -53,6 +54,7 @@
  * @method date        getGebdat()        Returns the current record's "gebdat" value
  * @method string      getStrasse()       Returns the current record's "strasse" value
  * @method string      getHnr()           Returns the current record's "hnr" value
+ * @method string      getAdrZusatz()     Returns the current record's "adr_zusatz" value
  * @method string      getPlz()           Returns the current record's "plz" value
  * @method string      getOrt()           Returns the current record's "ort" value
  * @method integer     getKto()           Returns the current record's "kto" value
@@ -90,6 +92,7 @@
  * @method Article     setGebdat()        Sets the current record's "gebdat" value
  * @method Article     setStrasse()       Sets the current record's "strasse" value
  * @method Article     setHnr()           Sets the current record's "hnr" value
+ * @method Article     setAdrZusatz()     Sets the current record's "adr_zusatz" value
  * @method Article     setPlz()           Sets the current record's "plz" value
  * @method Article     setOrt()           Sets the current record's "ort" value
  * @method Article     setKto()           Sets the current record's "kto" value
@@ -163,6 +166,10 @@ abstract class BaseArticle extends sfDoctrineRecord
         $this->hasColumn('hnr', 'string', 25, array(
              'type' => 'string',
              'length' => 25,
+             ));
+        $this->hasColumn('adr_zusatz', 'string', 200, array(
+             'type' => 'string',
+             'length' => 200,
              ));
         $this->hasColumn('plz', 'string', 5, array(
              'type' => 'string',

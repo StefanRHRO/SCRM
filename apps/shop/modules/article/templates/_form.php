@@ -207,11 +207,43 @@ $servicekosten = (1 == $article->service) ? 79.00 : 0;
 <div class="clear"></div>
 <?php
     $url = url_for('article/options');
+    $googleMapUrl = url_for('ajax/GoogleMap');
 $result = <<<JS
 
         /**
         * @todo refaktorieren!!1!
 */
+    
+    $('#article_plz').blur(function(){
+        var strasse = $('#article_strasse');
+        var hnr = $('#article_hnr');
+        var plz = $(this);
+        var ort = $('#article_ort');
+        var q = strasse.val() + ' ' + hnr.val() + ',' + plz.val();
+    
+        var data = {
+            q: q,
+        }
+    
+        $.ajax({
+            url: '{$googleMapUrl}',
+            data: data,
+            dataType: 'json',
+            success: function(r) {
+                var country = r.Placemark[0].AddressDetails.Country;
+                var city = country.AdministrativeArea.SubAdministrativeArea.Locality.LocalityName;
+                var postalcode = country.AdministrativeArea.SubAdministrativeArea.Locality.DependentLocality.PostalCode
+                
+                if (country.CountryNameCode == 'DE' && city.length>0 && postalcode.PostalCodeNumber == plz.val()) {
+                    ort.val(city);
+                } else {
+                    alert('Konnte keinen Ort finden!');
+                    plz.focus();
+                }
+            }
+        });
+    });
+    
         $('#article_service').change(function(){
             var id = $(this).attr('id');
             var kosten_mntl = $('#' + id + '_mntl_text');

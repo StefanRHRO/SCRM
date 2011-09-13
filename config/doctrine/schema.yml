@@ -17,6 +17,7 @@ Article:
     gebdat: { type: date }
     strasse: { type: string(200) }
     hnr: { type: string(25) }
+    adr_zusatz: { type: string(200) }
     plz: { type: string(5) }
     ort: { type: string(200) }
     kto: { type: integer(10), zerofill: true, unsigned: true }

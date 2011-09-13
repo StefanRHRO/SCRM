@@ -15,7 +15,7 @@ class ArticleForm extends BaseArticleForm {
         $years = range(date('Y') - 18, date('Y') - 98);
         $years_list = array_combine($years, $years);
 
-        $termin_years = range(date('Y'), date('Y') + 1);
+        $termin_years = range(date('Y'), date('Y') + 2);
         $termin_years_list = array_combine($termin_years, $termin_years);
 
         $this->setWidgets(array(
@@ -28,7 +28,12 @@ class ArticleForm extends BaseArticleForm {
             'ip_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Ip'), 'add_empty' => false), array('class' => 'option')),
             'fp' => new sfWidgetFormInputCheckbox(),
             'upl' => new sfWidgetFormInputCheckbox(),
-            'service' => new sfWidgetFormInputCheckbox(array(), array('value' => 1)),
+            //'service' => new sfWidgetFormInputCheckbox(array(), array('value' => 1)),
+            'service' => new sfWidgetFormChoice(array(
+                'multiple' => false,
+                'choices' => array('Nein', 'Ja'),
+                'expanded' => false,
+            )),
             'kdnr' => new sfWidgetFormInputText(array('label' => 'Kundennummer')),
             'titel' => new sfWidgetFormChoice(array(
                 'multiple' => false,
@@ -49,6 +54,7 @@ class ArticleForm extends BaseArticleForm {
             )),
             'strasse' => new sfWidgetFormInputText(array('label' => 'Straße')),
             'hnr' => new sfWidgetFormInputText(array('label' => 'Hausnummer'), array('size' => 1)),
+            'adr_zusatz' => new sfWidgetFormInputText(array('label' => 'Adress Zusatz')),
             'plz' => new sfWidgetFormInputText(),
             'ort' => new sfWidgetFormInputText(),
             'kto' => new sfWidgetFormInputText(array('label' => 'Kontonummer')),
@@ -83,6 +89,7 @@ class ArticleForm extends BaseArticleForm {
             'vorname' => new sfValidatorString(array('max_length' => 50, 'required' => true), array('required' => 'Bitte geben Sie den Vornamen ein!')),
             'gebdat' => new sfValidatorDate(array('required' => true), array('required' => 'Bitte geben Sie das Geburtsdatum an!')),
             'strasse' => new sfValidatorString(array('max_length' => 200, 'required' => true), array('required' => 'Bitte geben Sie die Straße an!', 'max_length' => 'Der Straßenname ist zu lang. Bitte nicht mehr als %max_length% Zeichen.')),
+            'adr_zusatz' => new sfValidatorString(array('max_length' => 200, 'required' => false), array('max_length' => 'Adresszusatz ist zu lang. Bitte nicht mehr als %max_length% Zeichen.')),
             'hnr' => new sfValidatorString(array('max_length' => 25, 'required' => true), array('required' => 'Die Hausnummer bitte nicht vergessen.', 'max_length' => 'Die Hausnummer ist zu lang. Bitte nicht mehr als %max_length% Zeichen benutzen.')),
             'plz' => new sfValidatorString(array('max_length' => 5, 'min_length' => 5, 'required' => true), array('required' => 'Bitte geben Sie eine PLZ an.', 'max_length' => 'Eine PLZ hat %max_length% Zeichen', 'min_length' => 'Eine PLZ hat %min_length% Zeichen')),
             'ort' => new sfValidatorString(array('max_length' => 200, 'required' => true), array('required' => 'Bitte geben Sie einen Ort an.', 'max_length' => 'Der Ortsname ist zu lang. Bitte nicht mehr als %max_length% Zeichen benutzen.')),
@@ -99,7 +106,7 @@ class ArticleForm extends BaseArticleForm {
             'created_at' => new sfValidatorDateTime(),
             'updated_at' => new sfValidatorDateTime(),
         ));
-        $this->useFields(array('kdnr', 'titel', 'name', 'vorname', 'gebdat', 'strasse', 'hnr', 'plz', 'ort', 'kto', 'blz', 'vorwahl', 'rfn', 'fax', 'mail', 'termin', 'tarif_id', 'laufzeit_id', 'portierung_id', 'guthaben_id', 'modem_id', 'ip_id', 'service', 'feld1', 'feld2', 'feld3', 'bestellt'));
+        $this->useFields(array('kdnr', 'titel', 'name', 'vorname', 'gebdat', 'strasse', 'hnr', 'adr_zusatz', 'plz', 'ort', 'kto', 'blz', 'vorwahl', 'rfn', 'fax', 'mail', 'termin', 'tarif_id', 'laufzeit_id', 'portierung_id', 'guthaben_id', 'modem_id', 'ip_id', 'service', 'feld1', 'feld2', 'feld3', 'bestellt'));
 
         $this->widgetSchema->setNameFormat('article[%s]');
     }
