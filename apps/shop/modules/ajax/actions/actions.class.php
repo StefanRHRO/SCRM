@@ -11,7 +11,7 @@
 class ajaxActions extends sfActions {
 
     public function executeGoogleMap(sfWebRequest $request) {
-        $q = $request->getGetParameter('q');
+        $q = $request->getGetParameter('q').',Deutschland';
         $url = 'http://maps.google.com/maps/geo';
         $r = new Zend_Http_Client($url);
         $r->setParameterGet('q', $q);
