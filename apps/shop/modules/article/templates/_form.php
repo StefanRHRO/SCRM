@@ -323,9 +323,9 @@ $result = <<<JS
         article_modem_id.change(function(){
             var value = $(this).val();
             var tarif_value = $('#article_tarif_id').val();
-            if(value == 18 && (tarif_value == 65 || tarif_value == 66 || tarif_value == 67 || tarif_value == 68 || tarif_value == 70 || tarif_value == 71)) {
-                alert('In diesem Tarif ist nur das ADSL Modem möglich.');
-                $(this).val('17');
+            if(value == 17 && (tarif_value == 66 || tarif_value == 67 || tarif_value == 70)) {
+                alert('In diesem Tarif ist nur das VDSL Modem möglich.');
+                $(this).val('18');
             }
         });
             
@@ -357,8 +357,8 @@ $result = <<<JS
                                 $('#article_portierung_id').attr('disabled', false).trigger('change');
                             }
                             
-                            if(resp.id == 65 || resp.id == 66 || resp.id == 67 || resp.id == 68 || resp.id == 70 || resp.id == 71) {
-                                article_modem_id.val('17');
+                            if(resp.id == 66 || resp.id == 67 || resp.id == 70) {
+                                article_modem_id.val('18');
                             }
 
                         }

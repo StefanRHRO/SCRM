@@ -31,7 +31,7 @@ class ArticleForm extends BaseArticleForm {
             //'service' => new sfWidgetFormInputCheckbox(array(), array('value' => 1)),
             'service' => new sfWidgetFormChoice(array(
                 'multiple' => false,
-                'choices' => array('Nein', 'Ja'),
+                'choices' => array('Nein', 'Ja + 79.- einmalig'),
                 'expanded' => false,
             )),
             'kdnr' => new sfWidgetFormInputText(array('label' => 'Kundennummer')),
