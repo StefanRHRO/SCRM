@@ -206,6 +206,9 @@ $servicekosten = (1 == $article->service) ? 79.00 : 0;
 </div>
 <div class="clear"></div>
 <?php
+    
+    $refresh_image_path = image_path('icons/arrow_refresh_small');
+
     $url = url_for('article/options');
     $googleMapUrl = url_for('ajax/GoogleMap');
 $result = <<<JS
@@ -214,10 +217,17 @@ $result = <<<JS
         * @todo refaktorieren!!1!
 */
     
-    $('#article_plz').blur(function(){
+    
+    var refresh_ort_image = $('<img/>', {
+        src: '{$refresh_image_path}',
+        width: 16,
+        height: 16,
+        title: 'Ort erfassen',
+        alt: 'Ort erfassen'
+    }).click(function(){
         var strasse = $('#article_strasse');
         var hnr = $('#article_hnr');
-        var plz = $(this);
+        var plz = $('#article_plz');
         var ort = $('#article_ort');
         var q = strasse.val() + ' ' + hnr.val() + ',' + plz.val();
     
@@ -238,11 +248,13 @@ $result = <<<JS
                     ort.val(city);
                 } else {
                     alert('Konnte keinen Ort finden!');
-                    plz.focus();
                 }
             }
         });
     });
+        
+        
+    $('#article_plz').after(refresh_ort_image);
     
         $('#article_service').change(function(){
             var id = $(this).attr('id');
@@ -307,6 +319,16 @@ $result = <<<JS
 
         });
 
+        var article_modem_id = $('#article_modem_id');
+        article_modem_id.change(function(){
+            var value = $(this).val();
+            var tarif_value = $('#article_tarif_id').val();
+            if(value == 18 && (tarif_value == 65 || tarif_value == 66 || tarif_value == 67 || tarif_value == 68 || tarif_value == 70 || tarif_value == 71)) {
+                alert('In diesem Tarif ist nur das ADSL Modem möglich.');
+                $(this).val('17');
+            }
+        });
+            
         $('select.option').change(function(){
             var obj = $(this);
             var value = obj.val();
@@ -326,7 +348,6 @@ $result = <<<JS
                     dataType: 'json',
                     success: function(resp) {
                         if(name == 'article[tarif_id]') {
-                        console.log(resp);
                             if(resp.is_country == 1) {
                                 $('#article_guthaben_id').val('').attr('disabled', true).trigger('change');
                                 $('#article_portierung_id').val('').attr('disabled', true).trigger('change');
@@ -335,6 +356,11 @@ $result = <<<JS
                                 $('#article_guthaben_id').attr('disabled', false).trigger('change');
                                 $('#article_portierung_id').attr('disabled', false).trigger('change');
                             }
+                            
+                            if(resp.id == 65 || resp.id == 66 || resp.id == 67 || resp.id == 68 || resp.id == 70 || resp.id == 71) {
+                                article_modem_id.val('17');
+                            }
+
                         }
                         var kosten_mntl = $('#' + id + '_mntl_text');
                         var kosten_mntl_hidden = $('#' + id + '_mntl_hidden');
