@@ -250,15 +250,22 @@ $result = <<<JS
             data: data,
             dataType: 'json',
             success: function(r) {
-                var country = r.Placemark[0].AddressDetails.Country;
-                var city = country.AdministrativeArea.SubAdministrativeArea.Locality.LocalityName;
-                var postalcode = country.AdministrativeArea.SubAdministrativeArea.Locality.DependentLocality.PostalCode
                 var status = r.Status.code;
-                if (status == 200 && country.CountryNameCode == 'DE' && city.length>0 && postalcode.PostalCodeNumber == plz.val()) {
-                    ort.val(city);
-                } else {
+                if(status == 200) {
+                    var country = r.Placemark[0].AddressDetails.Country;
+                    var city = country.AdministrativeArea.SubAdministrativeArea.Locality.LocalityName;
+                    var postalcode = country.AdministrativeArea.SubAdministrativeArea.Locality.DependentLocality.PostalCode
+
+                    if (status == 200 && country.CountryNameCode == 'DE' && city.length>0 && postalcode.PostalCodeNumber == plz.val()) {
+                        ort.val(city);
+                    } else {
+                        alert('Konnte keinen Ort finden!');
+                    }
+                }
+                else {
                     alert('Konnte keinen Ort finden!');
                 }
+                
             }
         });
     });
