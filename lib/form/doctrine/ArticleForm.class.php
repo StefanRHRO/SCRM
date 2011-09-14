@@ -45,13 +45,13 @@ class ArticleForm extends BaseArticleForm {
             'gebdat' => new sfWidgetFormDate(array(
                 'years' => $years_list,
                 'label' => 'Geburtsdatum',
-                'format' => '%day% %month% %year%'
-            )),
+                'format' => '%day% %month% %year%',
+            ), array('class' => 'date')),
             'termin' => new sfWidgetFormDate(array(
                 'label' => 'Terminwunsch',
                 'format' => '%day% %month% %year%',
                 'years' => $termin_years_list
-            )),
+            ), array('class' => 'date')),
             'strasse' => new sfWidgetFormInputText(array('label' => 'Straße')),
             'hnr' => new sfWidgetFormInputText(array('label' => 'Hausnummer'), array('size' => 1)),
             'adr_zusatz' => new sfWidgetFormInputText(array('label' => 'Adress Zusatz')),
@@ -71,6 +71,9 @@ class ArticleForm extends BaseArticleForm {
             'updated_at' => new sfWidgetFormDateTime(),
         ));
 
+        $termin_min_date = new Zend_Date();
+        $termin_min_date->setHour(0)->setMinute(0)->setSecond(0)->setMilliSecond(0)->addDay(14);
+        
         $this->setValidators(array(
             'id' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
             'tarif_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Tarif'), 'required' => true), array('required' => 'Bitte wählen Sie einen Tarif aus!')),
@@ -79,7 +82,7 @@ class ArticleForm extends BaseArticleForm {
             'modem_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Modem'), 'required' => true), array('required' => 'Bitte wählen Sie ein Modem aus!')),
             'portierung_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Portierung'), 'required' => false), array('required' => 'Portierung ja oder nein!')),
             'ip_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Ip'), 'required' => true), array('required' => 'Bitte wählen Sie aus, ob eine feste IP Adresse gewünscht ist!')),
-            'termin' => new sfValidatorDate(array('required' => true, 'min' => strtotime("+14 day"), 'date_format_range_error' => 'd.m.Y'), array('required' => 'Bitte geben Sie einen Termin an.', 'bad_format' => '"%value%" ist nicht im richtigem Format: %date_format%.', 'max' => 'Maximal gültiges Datum ist: %max%', 'min' => 'Mindestens gültiges Datum ist: %min%')),
+            'termin' => new sfValidatorDate(array('required' => true, 'min' => $termin_min_date->getTimestamp(), 'date_format_range_error' => 'd.m.Y'), array('required' => 'Bitte geben Sie einen Termin an.', 'bad_format' => '"%value%" ist nicht im richtigem Format: %date_format%.', 'max' => 'Maximal gültiges Datum ist: %max%', 'min' => 'Mindestens gültiges Datum ist: %min%')),
             'fp' => new sfValidatorPass(array('required' => false)),
             'upl' => new sfValidatorPass(array('required' => false)),
             'service' => new sfValidatorPass(array('required' => false)),

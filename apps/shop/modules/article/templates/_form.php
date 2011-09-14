@@ -208,7 +208,7 @@ $servicekosten = (1 == $article->service) ? 79.00 : 0;
 <?php
     
     $refresh_image_path = image_path('icons/arrow_refresh_small');
-
+    $calender_image_path = image_path('icons/calendar.png');
     $url = url_for('article/options');
     $googleMapUrl = url_for('ajax/GoogleMap');
 $result = <<<JS
@@ -218,6 +218,16 @@ $result = <<<JS
 */
     
     
+    /*var calendar_image = $('<img/>', {
+        src: '{$calender_image_path}',
+        width: 16,
+        height: 16,
+        title: 'Kalender öffnen',
+        alt: 'Kalender öffnen'
+    });
+    
+   $('select.date[name*="[year]"]').after(calendar_image);*/
+        
     var refresh_ort_image = $('<img/>', {
         src: '{$refresh_image_path}',
         width: 16,
@@ -243,8 +253,8 @@ $result = <<<JS
                 var country = r.Placemark[0].AddressDetails.Country;
                 var city = country.AdministrativeArea.SubAdministrativeArea.Locality.LocalityName;
                 var postalcode = country.AdministrativeArea.SubAdministrativeArea.Locality.DependentLocality.PostalCode
-                
-                if (country.CountryNameCode == 'DE' && city.length>0 && postalcode.PostalCodeNumber == plz.val()) {
+                var status = r.Status.code;
+                if (status == 200 && country.CountryNameCode == 'DE' && city.length>0 && postalcode.PostalCodeNumber == plz.val()) {
                     ort.val(city);
                 } else {
                     alert('Konnte keinen Ort finden!');
@@ -272,7 +282,7 @@ $result = <<<JS
             var gesamt_gesamt = $('#gesamt_gesamt_text');
             var gesamt_gesamt_hidden = $('gesamt_gesamt_hidden');
 
-            var status = $(this).is(':checked');
+            var status = $(this).val() == 1;
             if(status == true) {
                 kosten_mntl.text($.formatNumber(0, {locale:"de", format:'##0.00 €'}));
                         kosten_mntl_hidden.val(0);
